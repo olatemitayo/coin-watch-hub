@@ -31,6 +31,8 @@ export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLay
   }, [controls, inView]);
   return (
     <Flex
+    maw={1440}
+    m='auto'
       w="100%"
       justify="space-between"
       align="center"
