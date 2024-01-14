@@ -8,7 +8,7 @@ export  function Navbar() {
         {
           id: 1,
           title: 'Market',
-          link: '/market'
+          link: '/'
         }
         ,
         {
@@ -19,20 +19,20 @@ export  function Navbar() {
        ]
       
   return (
-    <Flex >
+    <Flex className='border-b border-b-[#DBDBDB] py-4' >
         <Flex
           justify="space-between"
           align="center"
           w="100%"
-          px={50}
+          px='clamp(12px,4vw,48px)'
         >
           <Flex align="center" >
-            <Title c="#0667d0">Coin</Title>
-            <BsEye size={80} color="#0667d0" />
+            <Title className='text-[clamp(20px,2vw,34px)]' c="#263238">Coin</Title>
+            <BsEye size='clamp(24px,4vw,48px)' color="#263238" />
           </Flex>
          <Flex gap={20}>
           {NavItems?.map((item) => (
-            <Link className="hover:text-[#0667d0] text-[#0A0B0D]" href={item?.link}>{item?.title}</Link>
+            <Link className="hover:text-[#0667d0] text-[#212326] clg:text-[14px]" href={item?.link}>{item?.title}</Link>
           ))}
          </Flex>
         </Flex>

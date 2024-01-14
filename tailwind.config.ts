@@ -7,12 +7,28 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+    maxWidth: {
+      page: "1440px",
+    },
+    fontSize: {
+      40: "clamp(28px,4vw,40px)",
+    },
+    screens: {
+      "2xl": { max: "1440px" },
+      xl: { max: "1279px" },
+      lg: { max: "1023px" },
+      pview: { max: "980px", min: "800px" },
+      clg: { max: "800px" },
+      md: { max: "700px" },
+      cmd: { max: "631px" },
+      mcmd: { min: "630px" },
+      cgsm: { max: "560px" },
+      gsm: { max: "500px" },
+      csm: { max: "425px" },
+      sm: { max: "320px" },
+    },
+    backgroundImage: {
+      "auth-bg": "url('/authBg.svg')",
     },
   },
   plugins: [],
