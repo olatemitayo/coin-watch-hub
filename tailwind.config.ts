@@ -7,6 +7,10 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily:{
+      poppins: ['var(--font-poppins )'],
+      pacifico: ['var(--font-pacifico)']
+    },
     maxWidth: {
       page: "1440px",
     },

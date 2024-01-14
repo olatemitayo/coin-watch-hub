@@ -36,7 +36,7 @@ export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLay
       w="100%"
       justify="space-between"
       align="center"
-      className="max-w-[1440px] m-auto lg:flex-col-reverse !mt-[clamp(100px,9vw,130px)]"
+      className="max-w-[1440px] m-auto lg:flex-col-reverse !mt-[clamp(100px,9vw,130px)] "
       px="clamp(12px,4vw,48px)"
       gap={16}
     >
@@ -54,10 +54,10 @@ export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLay
         animate={controls}
         className="flex flex-col justify-center items-center  text-center max-w-[700px] gap-[10px]"
       >
-        <Title className="text-[clamp(40px,5vw,80px)] text-[#212326]">
+        <Title className="text-[clamp(40px,5vw,80px)] text-[#212326] font-poppins">
           {title}
         </Title>
-        <Text className="text-[#797979] text-[clamp(14px,1vw,18px)] text-center">
+        <Text className="text-[#797979] text-[clamp(14px,1vw,18px)] text-center font-poppins">
          {text}
         </Text>
         <div className="clg:max-w-[600px] clg:w-full w-[600px]">
