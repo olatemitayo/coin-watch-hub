@@ -23,8 +23,10 @@ import { Trending } from "@/components/trending";
 
 import { Navbar } from "@/components";
 
+import TrendingHero from "@/components/trending-hero";
 
-export default function Home() {
+
+export default function TrendingPage() {
 
   // get trending list 
  const {data} = useQuery({
@@ -39,6 +41,7 @@ export default function Home() {
     <Stack>
       {/* Navbar  */}
      <Navbar />
+     <TrendingHero />
       <Trending />
     </Stack>
   );

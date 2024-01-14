@@ -22,7 +22,7 @@ import { builder } from "@/api/builder";
 import { Trending } from "@/components/trending";
 
 import { Navbar } from "@/components";
-import Hero from "@/components/hero";
+import Hero from "@/components/trending-hero";
 
 export default function Home() {
   // get trending list
@@ -37,7 +37,7 @@ export default function Home() {
     <Stack className="max-w-[1440px] m-auto gap-[clamp(20px,5vw,60px)] pb-5" >
       {/* Navbar  */}
       <Navbar />
-      <Hero />
+      {/* <Hero /> */}
       <Trending />
     </Stack>
   );

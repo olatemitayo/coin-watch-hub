@@ -20,7 +20,7 @@ export function DataTable({
   excludeFromRowClick?: string[];
 }) {
   return (
-    <div className="overflow-auto no-scrollbar flex flex-col justify-between h-full ">
+    <div className="overflow-auto no-scrollbar flex flex-col justify-between h-full  rounded-2xl">
       <table className="w-full">
         <thead
           style={{
@@ -31,7 +31,7 @@ export function DataTable({
           // className="!clg:14px"
         >
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <tr key={headerGroup.id} >
               {headerGroup.headers.map((header, index, arr) => {
                 return (
                   <th
@@ -74,7 +74,7 @@ export function DataTable({
           ))}
         </thead>
 
-        <tbody className="!bg-[#F5F5F5]">
+        <tbody className="!bg-[#F5F5F5] ">
           {table.getRowModel().rows.map((row, idx, arr) => {
             return (
               <tr
@@ -87,6 +87,7 @@ export function DataTable({
                   return (
                     <td
                       color="#5E606A"
+                      
                       onClick={() =>
                         onRowClick &&
                         cell.column.id !== "select" &&
@@ -96,7 +97,7 @@ export function DataTable({
                           : {}
                       }
                       className={clsx(
-                        idx === arr.length - 1 && "!border-b-0 text-xs clg:!pl-2",
+                        idx === arr.length - 1 && "!border-b-0 text-xs clg:!pl-2 ",
 
                         "table-cells-normal  !pl-6 clg:!pl-2"
                       )}

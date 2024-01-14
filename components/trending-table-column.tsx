@@ -1,7 +1,8 @@
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Avatar, Box, Flex, Text, Title } from "@mantine/core";
+import { Avatar, Box, Button, Flex, Text, Title } from "@mantine/core";
 import { TrendingItem, TrendingPokedex } from "@/utils/types";
+import Link from "next/link";
 
 export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
   {
@@ -26,14 +27,6 @@ export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
           </Text>
         </Flex>
       </Flex>
-    ),
-    enableSorting: false,
-  },
-  {
-    accessorKey: "symbol",
-    header: "Symbol",
-    cell: ({ row }) => (
-      <Text className="text-[#0A0B0D]">{row.original.symbol}</Text>
     ),
     enableSorting: false,
   },
@@ -75,12 +68,14 @@ export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
     enableSorting: false,
   },
   {
-    accessorKey: "slug",
-    header: "Slug",
+    accessorKey: "actions",
+    header: "Details",
     cell: ({ row }) => (
-      <Text className="text-[#0A0B0D] text-md clg:hidden">
-        {row.original.slug as string}
-      </Text>
+      <Link href={`/${row.original.coin_id}`}>
+      <Button id={row.original.coin_id as unknown as string} className="text-[#0A0B0D] bg-red-300 hover:bg-red-400 text-md clg:hidden">
+       Details
+      </Button>
+      </Link>
     ),
     enableSorting: false,
   },

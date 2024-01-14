@@ -1,6 +1,6 @@
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Avatar, Box, Flex, Text, Title } from "@mantine/core";
+import { Avatar, Box, Button, Flex, Text, Title } from "@mantine/core";
 import { TrendingItem, TrendingPokedex } from "@/utils/types";
 
 export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
@@ -29,15 +29,6 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
     ),
     enableSorting: false,
   },
- 
-  // {
-  //   accessorKey: "market_cap_rank",
-  //   header: "Rank",
-  //   cell: ({ row }) => (
-  //     <Text className="text-[#0A0B0D] clg:text-[12px]">{row.original.market_cap_rank}</Text>
-  //   ),
-  //   enableSorting: true,
-  // },
   {
     accessorKey: "data",
     header: "Price",
@@ -64,6 +55,16 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
       <Text className="text-[#0A0B0D] clg:text-[12px]">
         {row.original.data.total_volume as string}
       </Text>
+    ),
+    enableSorting: false,
+  },
+  {
+    accessorKey: "actions",
+    header: "Details",
+    cell: ({ row }) => (
+      <Button id={row.original.coin_id as unknown as string} className="text-[#0A0B0D] bg-red-300 hover:bg-red-400 text-md clg:hidden">
+       Details
+      </Button>
     ),
     enableSorting: false,
   },
