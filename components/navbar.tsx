@@ -20,7 +20,7 @@ export function Navbar() {
   ];
 
   return (
-    <Flex className="border-b border-b-[#DBDBDB] py-4 fixed w-full z-10 backdrop-blur-md bg-white/50 mb-14">
+    <Flex className="border-b border-b-[#DBDBDB] py-4 fixed w-full z-10 backdrop-blur-md bg-white/80 mb-14">
       <Flex
         justify="space-between"
         align="center"

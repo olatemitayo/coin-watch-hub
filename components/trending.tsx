@@ -39,7 +39,7 @@ export function Trending() {
     queryKey: builder.asset.trending.get(),
     select: ({ data }) => data?.coins?.map((item) => item?.item),
   });
-  console.log({ trendingData });
+  // console.log({ trendingData });
   const { table } = useCustomTable({
     tableData: trendingData,
     columns: TrendingTableColumns,
