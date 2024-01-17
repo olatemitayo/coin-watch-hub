@@ -2,12 +2,12 @@ import { Stack, TextInput } from "@mantine/core";
 import {  BiSearch } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import { builder } from "@/api/builder";
-import {  DataTable, HeroLayout, Navbar, ProductLoading } from "@/components";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useCustomTable } from "@/hooks/custom-data";
 import { ExploreTableColumns } from "@/components/explore-table-column";
+import { DataTable, HeroLayout, Navbar, ProductLoading } from "@/components";
 
 export default function Home() {
   const controls = useAnimation();
