@@ -1,13 +1,11 @@
-import { Stack, TextInput } from "@mantine/core";
-import {  BiSearch } from "react-icons/bi";
-import { useQuery } from "@tanstack/react-query";
-import { builder } from "@/api/builder";
+import { Stack } from "@mantine/core";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useCustomTable } from "@/hooks/custom-data";
 import { ExploreTableColumns } from "@/components/explore-table-column";
-import { DataTable, HeroLayout, Navbar, ProductLoading } from "@/components";
+import { DataTable, HeroLayout, Navbar, ProductLoading, Searchcoin } from "@/components";
+import { CoinContext } from "@/providers";
 
 export default function Home() {
   const controls = useAnimation();
@@ -28,22 +26,20 @@ export default function Home() {
       });
     }
   }, [controls, inView]);
-  // get trending list
-  const { data: exploreData, isLoading } = useQuery({
-    queryFn: () => builder.use().asset.coin_list(),
-    queryKey: builder.asset.coin_list.get(),
-    select: ({data}) => data,
+
+  const { cryptoData, isLoading } = useContext(CoinContext);
+  console.log({ cryptoData });
+
+  const { table } = useCustomTable({
+    tableData: cryptoData,
+    columns: ExploreTableColumns,
   });
-  console.log({ exploreData });
-  const {table} = useCustomTable({
-    tableData: exploreData,
-    columns: ExploreTableColumns
-  })
 
   return (
     <Stack className=" gap-[clamp(20px,5vw,60px)] pb-5">
       {/* Navbar  */}
       <Navbar />
+
       <HeroLayout
         imgLeft="/Pattern.svg"
         imgRight="/coin.png"
@@ -53,15 +49,7 @@ export default function Home() {
         digital assets, empowering you to make informed decisions in the
         fast-evolving crypto landscape."
       >
-        <TextInput
-          classNames={{
-            input:
-              "border !border-red-400 py-[25px] px-[18px] rounded rounded-[24px]",
-          }}
-          className="w-full "
-          placeholder="search an asset"
-          rightSection={<BiSearch size={24} />}
-        />
+       <Searchcoin />
       </HeroLayout>
       <motion.div
         ref={ref}
@@ -69,9 +57,10 @@ export default function Home() {
         animate={controls}
         className="px-[clamp(8px,4vw,48px)]"
       >
-        <div >
+        <div className="clg:hidden">
           {isLoading ? <ProductLoading /> : <DataTable table={table} />}
         </div>
+        {/* <DataTable table={table} /> */}
         {/* <div className="hidden clg:block">
         {isLoading ? <ProductLoading /> : <DataTable table={clgtable} />}
       </div> */}

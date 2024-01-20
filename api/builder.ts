@@ -6,6 +6,7 @@ export const builder = createBuilder({
     asset: {
         trending: () => API.get<TrendingPokedexData>('/search/trending'),
         coin_list: () => API.get(`/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&locale=en`),
-        details: (id: string) => API.get<individualCoinList>(`/coins/${id}`)
+         details: (id: string) => API.get<individualCoinList>(`/coins/${id}`),
+         search: (query: string ) => API.get(`/search?query=${query}`)
     }
 })

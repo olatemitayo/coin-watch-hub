@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import { Poppins, Pacifico } from "@next/font/google";
 
+import { CryptoProvider } from "@/providers";
+
 const poppins = Poppins({
   subsets: ["latin"],
   variable: '--font-poppins',
@@ -27,10 +29,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={`${poppins.variable}  font-poppins `}>
       <QueryClientProvider client={queryClient}>
+      <CryptoProvider>
         <MantineProvider withNormalizeCSS withGlobalStyles >
           <Component {...pageProps} />
         </MantineProvider>
+      </CryptoProvider>
       </QueryClientProvider>
+
     </main>
   );
 }
