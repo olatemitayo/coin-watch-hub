@@ -1,6 +1,6 @@
-import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import React, { ReactNode, useLayoutEffect, useState } from "react";
 import { createContext } from "react";
-import { useDebouncedValue } from "@mantine/hooks";
+import {  SearchCoin, SearchData, SearchPokedex } from "@/utils";
 
 
 
@@ -45,8 +45,8 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/search?query=${query}`
       ).then((res) => res.json()).then(json => json);
-      console.log({data})
-      setSearchData(data);
+      setSearchData(data?.coins);
+      console.log({searchData})
     } catch (error) {
       console.error(error);
     } finally {

@@ -388,3 +388,60 @@ export enum TargetCoinID {
 export enum TrustScore {
     Green = "green",
 }
+
+
+//search types
+export interface SearchPokedex {
+    data: SearchData;
+}
+
+export interface SearchData {
+    coins:      SearchCoin[];
+    exchanges:  SearchExchange[];
+    icos:       any[];
+    categories: SearchCategory[];
+    nfts:       SearchNft[];
+}
+
+export interface SearchCategory {
+    id:   number;
+    name: Name;
+}
+
+export enum Name {
+    Eth20Staking = "Eth 2.0 Staking",
+    EthereumEcosystem = "Ethereum Ecosystem",
+    EthereumPoSIOU = "Ethereum PoS IOU",
+    EthereumPoWEcosystem = "EthereumPoW Ecosystem",
+    EthereumPoWIOU = "Ethereum PoW IOU",
+    OptimismEcosystem = "Optimism Ecosystem",
+}
+
+export interface SearchCoin {
+    id:              string;
+    name:            string;
+    api_symbol:      string;
+    symbol:          string;
+    market_cap_rank: number;
+    thumb:           string;
+    large:           string;
+}
+
+export interface SearchExchange {
+    id:          string;
+    name:        string;
+    market_type: SearchMarketType;
+    thumb:       string;
+    large:       string;
+}
+
+export enum SearchMarketType {
+    Spot = "spot",
+}
+
+export interface SearchNft {
+    id:     string;
+    name:   string;
+    symbol: string;
+    thumb:  string;
+}
