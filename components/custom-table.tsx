@@ -20,7 +20,7 @@ export function DataTable({
   excludeFromRowClick?: string[];
 }) {
   return (
-    <div className="overflow-auto no-scrollbar flex flex-col justify-between h-full  rounded-2xl">
+    <div className="overflow-auto no-scrollbar flex flex-col justify-between h-full  rounded-2xl font-poppins">
       <table className="w-full">
         <thead
           style={{
@@ -36,9 +36,9 @@ export function DataTable({
                 return (
                   <th
                     className={clsx(
-                      index === arr.length - 1 && "!pr-6 !py-4 clg:!pl-2  !clg:text-[14px]",
+                      index === arr.length - 1 && "!pr-6 !py-4 clg:!pl-2  !clg:text-[14px] font-poppins",
 
-                      "table-heading !pl-6 !py-4 clg:!pl-2 !clg:text-[14px]"
+                      "table-heading !pl-6 !py-4 clg:!pl-2 !clg:text-[14px] font-poppins"
                     )}
                     key={header.id}
                     colSpan={header.colSpan}
@@ -47,8 +47,8 @@ export function DataTable({
                       <div
                         {...{
                           className: header.column.getCanSort()
-                            ? "cursor-pointer flex gap-1 items-center"
-                            : "flex justify-start ",
+                            ? "cursor-pointer flex gap-1 items-center font-poppins"
+                            : "flex justify-start font-poppins",
 
                           onClick: header.column.getToggleSortingHandler(),
                         }}
@@ -74,7 +74,7 @@ export function DataTable({
           ))}
         </thead>
 
-        <tbody className="!bg-[#F5F5F5] ">
+        <tbody className="!bg-[#F5F5F5] font-poppins">
           {table.getRowModel().rows.map((row, idx, arr) => {
             return (
               <tr
@@ -97,9 +97,9 @@ export function DataTable({
                           : {}
                       }
                       className={clsx(
-                        idx === arr.length - 1 && "!border-b-0 text-xs clg:!pl-2 ",
+                        idx === arr.length - 1 && "!border-b-0 text-xs clg:!pl-2 font-poppins",
 
-                        "table-cells-normal  !pl-6 clg:!pl-2"
+                        "table-cells-normal  !pl-6 clg:!pl-2 font-poppins"
                       )}
                       key={cell.id}
                     >

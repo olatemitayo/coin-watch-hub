@@ -1,12 +1,12 @@
 import { CoinContext } from "@/providers";
 import debounce from "lodash.debounce";
-import { Text, TextInput } from "@mantine/core";
+import { Box, Flex, Text, TextInput } from "@mantine/core";
 import React, { useContext, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 
 const SearchInput = ({handleSearch}: {handleSearch: any}) => {
   const [searchText, setSearchText] = useState("");
-  const {searchData} = useContext(CoinContext)
+  const {searchData, setCoinSearch, setSearchData} = useContext(CoinContext)
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -15,8 +15,19 @@ const SearchInput = ({handleSearch}: {handleSearch: any}) => {
     setSearchText(query);
     handleSearch({ query });
   };
+
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    handleSearch(searchText)
+  }
+
+  const selectCoin = (coin : string | any) => {
+    setCoinSearch(coin)
+    setSearchData()
+    setSearchText('')
+  }
   return(
-    <form className="relative w-full">
+    <form className="relative w-full" onSubmit={handleSubmit}>
     <TextInput
       onChange={handleInput}
       value={searchText}
@@ -29,10 +40,16 @@ const SearchInput = ({handleSearch}: {handleSearch: any}) => {
       rightSection={<BiSearch type="submit" size={24} />}
     />
   {searchText.length > 0 ? (
-    <ul className=" p-6 h-[500px] overflow-auto rounded-md text-white font-medium flex flex-col gap-2 text-start absolute mt-[clamp(8px,1.5vw,24px)] bg-[#212326] w-full  bg-opacity-60 backdrop-blur-md">
+    <ul className="z-10 p-6 h-[500px] overflow-auto rounded-md text-white font-medium flex flex-col gap-2 text-start absolute mt-[clamp(8px,1.5vw,24px)] bg-[#212326] w-full  bg-opacity-60 backdrop-blur-md">
      {searchData ? searchData?.map((coin :any) => (
-      <li key={coin?.id}>{coin?.name} </li>
-     )) : <Text>Please wait....</Text>}
+      <Flex key={coin?.id} onClick={() => selectCoin(coin?.id)} gap={8} align='center' className="cursor-pointer w-max hover:bg-red-200 hover:bg-opacity-40 p-2 rounded-md">
+        <img className="w-[24px]" src={coin?.large} alt="" />
+        <Flex gap={8} align='center'>
+        <li className="text-[20px]">{coin?.name} </li>
+        <div className="text-[12px] text-red-200">({coin?.symbol})</div>
+        </Flex>
+      </Flex>
+     )) : <Text className="h-[500px]">Please wait....</Text>}
     </ul>
   ) : null}
   </form>
@@ -47,7 +64,7 @@ export function Searchcoin() {
 
   const debounceFunc = debounce((val: any) => {
     getSearchResult(val);
-  }, 2500); 
+  }, 2000); 
  
   return (
     <>

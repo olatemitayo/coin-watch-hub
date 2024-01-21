@@ -1,10 +1,16 @@
-import { Stack } from "@mantine/core";
+import { Button, Flex, Stack } from "@mantine/core";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useContext, useEffect } from "react";
 import { useCustomTable } from "@/hooks/custom-data";
 import { ExploreTableColumns } from "@/components/explore-table-column";
-import { DataTable, HeroLayout, Navbar, ProductLoading, Searchcoin } from "@/components";
+import {
+  DataTable,
+  HeroLayout,
+  Navbar,
+  ProductLoading,
+  Searchcoin,
+} from "@/components";
 import { CoinContext } from "@/providers";
 
 export default function Home() {
@@ -27,7 +33,8 @@ export default function Home() {
     }
   }, [controls, inView]);
 
-  const { cryptoData, isLoading } = useContext(CoinContext);
+  const { cryptoData, isLoading, coinSearch, setCoinSearch } =
+    useContext(CoinContext);
   console.log({ cryptoData });
 
   const { table } = useCustomTable({
@@ -49,7 +56,7 @@ export default function Home() {
         digital assets, empowering you to make informed decisions in the
         fast-evolving crypto landscape."
       >
-       <Searchcoin />
+        <Searchcoin />
       </HeroLayout>
       <motion.div
         ref={ref}
@@ -60,6 +67,16 @@ export default function Home() {
         <div className="clg:hidden">
           {isLoading ? <ProductLoading /> : <DataTable table={table} />}
         </div>
+        <Flex w="100%" align="center" justify="center">
+          {coinSearch != "" ? (
+            <Button
+              onClick={() => setCoinSearch("")}
+              className="mt-12 cursor-pointer bg-red-300 hover:bg-red-400 "
+            >
+              View all Assets
+            </Button>
+          ) : null}
+        </Flex>
         {/* <DataTable table={table} /> */}
         {/* <div className="hidden clg:block">
         {isLoading ? <ProductLoading /> : <DataTable table={clgtable} />}
