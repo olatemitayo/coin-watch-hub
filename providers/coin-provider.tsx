@@ -1,4 +1,4 @@
-import React, { ReactNode, useLayoutEffect, useState } from "react";
+import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
 import { createContext } from "react";
 import {  SearchCoin, SearchData, SearchPokedex } from "@/utils";
 
@@ -63,7 +63,7 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     getCryptoData();
   }, [coinSearch]);
 

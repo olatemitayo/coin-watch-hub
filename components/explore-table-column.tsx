@@ -101,7 +101,7 @@ export const ExploreTableColumns: ColumnDef<ExplorePokedex>[] = [
       <Link href={`/${row.original.id}`} className="cursor-pointer">
         <Button
           id={row.original.total_supply as unknown as string}
-          className="text-[#0A0B0D] bg-red-300 hover:bg-red-400 text-md clg:hidden font-poppins"
+          className="text-[#fff] bg-red-300 hover:bg-red-400  font-poppins"
         >
           Details
         </Button>
