@@ -5,7 +5,7 @@ import {  SearchCoin, SearchData, SearchPokedex } from "@/utils";
 
 
 interface CoinContextProps {
-  cryptoData: any;
+  cryptoData:  any;
   isLoading: boolean;
   searchData: any;
   getSearchResult: any ;

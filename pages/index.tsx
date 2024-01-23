@@ -5,9 +5,12 @@ import { useContext, useEffect } from "react";
 import { useCustomTable } from "@/hooks/custom-data";
 import { ExploreTableColumns } from "@/components/explore-table-column";
 import {
+  ClgTrendingTableColumns,
   DataTable,
   HeroLayout,
+  MobileTable,
   Navbar,
+  Pagination,
   ProductLoading,
   Searchcoin,
 } from "@/components";
@@ -42,6 +45,8 @@ export default function Home() {
     columns: ExploreTableColumns,
   });
 
+
+
   return (
     <Stack className=" gap-[clamp(20px,5vw,60px)] pb-5">
       {/* Navbar  */}
@@ -67,6 +72,10 @@ export default function Home() {
         <div className="clg:hidden">
           {isLoading ? <ProductLoading /> : <DataTable table={table} />}
         </div>
+        <div className="hidden clg:block">
+       <MobileTable />
+      </div>
+        <Pagination />
         <Flex w="100%" align="center" justify="center">
           {coinSearch != "" ? (
             <Button
@@ -77,10 +86,8 @@ export default function Home() {
             </Button>
           ) : null}
         </Flex>
-        {/* <DataTable table={table} /> */}
-        {/* <div className="hidden clg:block">
-        {isLoading ? <ProductLoading /> : <DataTable table={clgtable} />}
-      </div> */}
+       
+       
       </motion.div>
     </Stack>
   );

@@ -26,9 +26,10 @@ export function DataTable({
           style={{
             color: "#fff",
             backgroundColor: "#263238",
-        //  fontSize:'14px'
+        //  fontSize:'14px' 
           }}
-          // className="!clg:14px"
+          
+         
         >
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id} >

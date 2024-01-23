@@ -5,13 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import { builder } from "@/api/builder";
 import { Trending } from "@/components/trending";
 import { HeroLayout, Navbar } from "@/components";
+import { TrendingPokedexData } from "@/utils";
 
 export default function TrendingPage() {
   // get trending list
   const { data } = useQuery({
     queryFn: () => builder.use().asset.trending(),
     queryKey: builder.asset.trending.get(),
-    select: ({ data }) => data?.coins,
+    select: ({ data }:{data:TrendingPokedexData}) => data?.coins,
   });
 
   console.log({ data });

@@ -1,7 +1,7 @@
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Avatar, Box, Button, Flex, Text, Title } from "@mantine/core";
-import { TrendingItem, TrendingPokedex } from "@/utils/types";
+import { Avatar, Button, Flex, Text } from "@mantine/core";
+import { TrendingItem } from "@/utils/types";
 import Link from "next/link";
 
 export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
