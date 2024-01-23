@@ -39,7 +39,7 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
     header: "Market Cap",
     cell: (info ) => (
       <Text className="text-[#0A0B0D] text-[12px] font-poppins">
-        {(info.getValue().toLocaleString() as string) ?? "--"}
+        {(info.getValue() as string).toLocaleString() ?? "--"}
       </Text>
     ),
   },
