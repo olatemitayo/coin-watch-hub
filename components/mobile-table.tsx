@@ -5,14 +5,14 @@ import { ClgTrendingTableColumns, DataTable, ProductLoading } from '.';
 
 export  function MobileTable() {
 
-    const { cryptoData:mobileData, isLoading } =
+    const { cryptoData, isLoading } =
     useContext(CoinContext);
 //   console.log({ mobileData });
   const { table } = useCustomTable({
-    tableData: mobileData,
+    tableData: cryptoData,
     columns: ClgTrendingTableColumns,
   });
-  console.log({mobileData})
+//   console.log({cryptoData})
   return (
     <>
      {isLoading ? <ProductLoading /> : <DataTable table={table} />}
