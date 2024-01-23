@@ -58,14 +58,14 @@ export default function CoinDetails() {
             <Flex w="100%" direction="column" align="center" gap={17}>
               <Flex direction='column' gap={7}>
 
-              <Flex gap={8} align="center" justify="center">
+              <Flex gap={8} align="center" justify="center" wrap='wrap' w='100%'>
                 <img
-                  className="w-[clamp(35px,4vw,70px)] h-[clamp(35px,4vw,70px)]"
+                  className="w-[clamp(60px,4vw,70px)] h-[clamp(60px,4vw,70px)]"
                   src={DetailsDetails?.image?.small as string}
                   alt=""
                 />
-                <Flex align="center" gap={8}>
-                  <Title className="text-[clamp(36px,4vw,80px] text-[#212326]">
+                <Flex align="center" gap={8} wrap='wrap' justify='center' w='100%'>
+                  <Title className="text-[clamp(28px,4vw,80px] text-[#212326] text-center">
                     {DetailsDetails?.name}
                   </Title>
                   <Text className="text-[30px] text-[#797979]">
@@ -78,7 +78,7 @@ export default function CoinDetails() {
                 even higher earning rates and our lowest borrowing rates.
               </Text>
               </Flex>
-              <Flex align="center" gap={8}>
+              <Flex align="center" justify='center' gap={8} wrap='wrap' w='100%'>
                 <Text className="text-[#212326] text-[35px] font-bold">
                   {`$${DetailsDetails?.market_data?.current_price['usd'].toLocaleString()}`}
                 </Text>
@@ -96,8 +96,8 @@ export default function CoinDetails() {
             {/* about token  */}
             <Flex w="100%" gap={43} justify="space-between" className="lg:flex-col">
               <Flex w="49%" direction="column" className="lg:w-full">
-                <Flex align="center" gap={8} className="text-[40px]">
-                <Title className="text-[clamp(36px,4vw,80px] text-[#212326]">
+                <Flex align="center" gap={8} className="text-[40px]" w='100%' justify='center' wrap='wrap'>
+                <Title className="text-[clamp(36px,4vw,80px] text-[#212326] text-center">
                     {DetailsDetails?.name}
                   </Title>
                   <Text className="text-[30px] text-[#9EA6FF]">
@@ -115,22 +115,22 @@ export default function CoinDetails() {
                 className=" flex-1 max-h-max border bg-[#263238] rounded-[30px] "
               >
                 <Flex direction="column" gap={24} className=" py-[clamp(15px,2vw,30px)]">
-                  <Title className="px-[clamp(24px,4vw,60px)] text-[25px]" c="#fff">24hrs low and high</Title>
-                  <Flex gap={8} justify="space-between" c="#fff" className="px-[clamp(24px,4vw,60px)]">
-                    <Flex direction="column">
-                      <Text>Low :</Text>
-                      <Text c="#FF4141">
+                  <Title className="px-[clamp(16px,4vw,60px)] text-[clamp(18px,1.5vw,25px)]" c="#fff">24hrs low and high</Title>
+                  <Flex gap={8} justify="space-between" c="#fff" className="px-[clamp(16px,4vw,60px)]">
+                    <Flex direction="column" className="clg:text-[14px]">
+                      <Text>Low </Text>
+                      <Text c="#FF4141" className="">
                       ${DetailsDetails?.market_data.low_24h["usd"].toLocaleString()}
                       </Text>
                     </Flex>
-                    <Flex direction="column">
-                      <Text>High :</Text>
+                    <Flex direction="column" className="clg:text-[14px]">
+                      <Text>High </Text>
                       <Text c="#3EBA59">
                         ${DetailsDetails?.market_data.high_24h["usd"].toLocaleString()}
                       </Text>
                     </Flex>
-                    <Flex direction="column">
-                      <Text>All Time High :</Text>
+                    <Flex direction="column" className="clg:text-[14px]">
+                      <Text>All Time High </Text>
                       <Text c="#3EBA59">
                       ${DetailsDetails?.market_data.ath["usd"].toLocaleString()}
                       </Text>
@@ -138,23 +138,23 @@ export default function CoinDetails() {
                   </Flex>
                 </Flex>
                 <Divider color="#5B6468"/>
-                <Flex direction="column" gap={24} className=" py-[clamp(20px,3.5vw,40px)]">
-                  <Title className="px-[clamp(24px,4vw,60px)] text-[25px]" c="#fff">{DetailsDetails?.name} Market Information</Title>
-                  <Flex gap={8} justify="space-between" c="#fff" className="px-[clamp(24px,4vw,60px)]">
+                <Flex direction="column" gap={24} className=" py-[clamp(15px,2vw,30px)]">
+                  <Title className="px-[clamp(16px,4vw,60px)] text-[clamp(18px,1.5vw,25px)]" c="#fff">{DetailsDetails?.name} Market Information</Title>
+                  <Flex gap={8} justify="space-between" c="#fff" className="px-[clamp(16px,4vw,60px)]">
                     <Flex direction="column" className="clg:text-[14px]">
-                      <Text>Popularity :</Text>
-                      <Text >
+                      <Text>Popularity </Text>
+                      <Text  className="text-[#9EA6FF]">
                       #{DetailsDetails?.market_cap_rank}
                       </Text>
                     </Flex>
                     <Flex direction="column" className="clg:text-[14px]">
-                      <Text>Volume (24hours) :</Text>
+                      <Text>Volume (24hours) </Text>
                       <Text c="#3EBA59">
                       ${formatNumberInBillions(Number(DetailsDetails?.market_data?.total_volume['usd']))}
                       </Text>
                     </Flex>
                     <Flex direction="column" className="clg:text-[14px]">
-                      <Text>Market Cap:</Text>
+                      <Text>Market Cap</Text>
                       <Text c="#3EBA59">
                       ${formatNumberInBillions(Number(DetailsDetails?.market_data?.market_cap['usd']))}
                       </Text>
