@@ -56,7 +56,7 @@ export default function CoinDetails() {
           <Flex mt={40} direction="column" gap="clamp(30px,8vw,100px)">
             {/* hero details  */}
             <Flex w="100%" direction="column" align="center" gap={17}>
-              <Flex direction='column' gap={7}>
+              <Flex direction='column' gap={7} w='100%' align='center'>
 
               <Flex gap={8} align="center" justify="center" wrap='wrap' w='100%'>
                 <img
@@ -65,42 +65,46 @@ export default function CoinDetails() {
                   alt=""
                 />
                 <Flex align="center" gap={8} wrap='wrap' justify='center' w='100%'>
-                  <Title className="text-[clamp(28px,4vw,80px] text-[#212326] text-center">
+                  <Title className="text-[clamp(28px,4vw,80px] cgsm:!text-[24px] text-[#212326] text-center">
                     {DetailsDetails?.name}
                   </Title>
-                  <Text className="text-[30px] text-[#797979]">
+                  <Text className="text-[clamp(18px,2vw,34px)] text-[#797979]">
                     ({DetailsDetails?.symbol})
                   </Text>
                 </Flex>
               </Flex>
-              <Text className="text-center text-[#797979] lg:text-[14px] leading-7" maw={500}>
+              <Text className="text-center text-[#797979] lg:text-[14px] leading-7 items-center w-full" maw={500}>
                 Free equity investments and flat ₹20 intraday and F&O trades
                 even higher earning rates and our lowest borrowing rates.
               </Text>
               </Flex>
               <Flex align="center" justify='center' gap={8} wrap='wrap' w='100%'>
-                <Text className="text-[#212326] text-[35px] font-bold">
+                <Text className="text-[#212326] text-[clamp(20px,2vw,35px)] font-bold">
                   {`$${DetailsDetails?.market_data?.current_price['usd'].toLocaleString()}`}
                 </Text>
+                <Flex>
                 <Text
                   style={{
                     color:
                       marketCapChange && marketCapChange < 0 ? "red" : "green",
                   }}
+                  className="text-[clamp(14px,1vw,16px)]"
                 >
                   {marketCapChange && marketCapChange.toFixed(2)}%{" "}
-                  <span className="text-[#797979]">(24hrs)</span>
+                  <span className= "text-[clamp(14px,1vw,16px)] text-[#797979]">(24hrs)</span>
                 </Text>
+
+                </Flex>
               </Flex>
             </Flex>
             {/* about token  */}
             <Flex w="100%" gap={43} justify="space-between" className="lg:flex-col">
               <Flex w="49%" direction="column" className="lg:w-full">
-                <Flex align="center" gap={8} className="text-[40px]" w='100%' justify='center' wrap='wrap'>
-                <Title className="text-[clamp(36px,4vw,80px] text-[#212326] text-center">
+                <Flex align="center" gap={8} className="text-[40px]"  wrap='wrap'>
+                <Title className="text-[clamp(28px,4vw,80px] cgsm:!text-[24px] text-[#212326] ">
                     {DetailsDetails?.name}
                   </Title>
-                  <Text className="text-[30px] text-[#9EA6FF]">
+                  <Text className="text-[clamp(18px,2vw,34px)] text-[#9EA6FF]">
                     ({DetailsDetails?.symbol})
                   </Text>
                  

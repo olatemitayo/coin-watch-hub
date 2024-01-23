@@ -28,8 +28,11 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
     accessorKey: "current_price",
     header: "Price",
     cell: (info ) => (
-      <Text className="text-red-500 text-[12px] font-poppins">
-        {(info.getValue() as string) ?? "--"}
+      <Text className=" text-[12px] font-poppins">
+        {info ? <>  {`$${(info.getValue() as string)} `} </> : <> -- </>
+
+        }
+      
       </Text>
     ),
     enableSorting: false,
