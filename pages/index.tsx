@@ -5,7 +5,6 @@ import { useContext, useEffect } from "react";
 import { useCustomTable } from "@/hooks/custom-data";
 import { ExploreTableColumns } from "@/components/explore-table-column";
 import {
-  ClgTrendingTableColumns,
   DataTable,
   HeroLayout,
   MobileTable,
@@ -38,14 +37,10 @@ export default function Home() {
 
   const { cryptoData, isLoading, coinSearch, setCoinSearch } =
     useContext(CoinContext);
-  console.log({ cryptoData });
-
   const { table } = useCustomTable({
     tableData: cryptoData,
     columns: ExploreTableColumns,
   });
-
-
 
   return (
     <Stack className=" gap-[clamp(20px,5vw,60px)] pb-5">
@@ -73,21 +68,41 @@ export default function Home() {
           {isLoading ? <ProductLoading /> : <DataTable table={table} />}
         </div>
         <div className="hidden clg:block">
-       <MobileTable />
-      </div>
-        <Pagination />
-        <Flex w="100%" align="center" justify="center">
-          {coinSearch != "" ? (
-            <Button
-              onClick={() => setCoinSearch("")}
-              className="mt-12 cursor-pointer bg-red-300 hover:bg-red-400 "
+          <MobileTable />
+        </div>
+          {isLoading ? null : 
+        <Flex w="100%" justify="space-between" align='center' py={20}>
+            <span>
+            Powered by{" "}
+            <a
+              href="http://www.coingecko.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-300 hover:text-red-400 hover:font-extrabold"
             >
-              View all Assets
-            </Button>
-          ) : null}
+              {" "}
+              Coingecko
+            </a>
+          </span>
+          <Pagination />
         </Flex>
+          }
        
-       
+        <Flex w="100%" align="center" justify="center">
+          {isLoading ? null : (
+            <>
+              {" "}
+              {coinSearch != "" ? (
+                <Button
+                  onClick={() => setCoinSearch("")}
+                  className="mt-12 cursor-pointer bg-red-300 hover:bg-red-400 "
+                >
+                  View all Assets
+                </Button>
+              ) : null}
+            </>
+          )}
+        </Flex>
       </motion.div>
     </Stack>
   );

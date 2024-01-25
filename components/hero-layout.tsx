@@ -41,10 +41,10 @@ export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLay
       gap={16}
     >
       <motion.img
-        initial={{ x: -2000 }}
+        initial={{ x: -2 }}
         animate={{ x: 0 }}
-        transition={{ duration: 1.2 }}
-        className="w-[clamp(100px,10vw,160px)] lg:hidden"
+        transition={{ duration: 2 }}
+        className="w-[clamp(60px,10vw,160px)] lg:hidden"
         src={imgLeft}
         alt=""
       />
@@ -65,10 +65,14 @@ export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLay
         </div>
       </motion.div>
       <motion.img
-        initial={{ x: 2000 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 1.2 }}
-        className="w-[clamp(220px,20vw,320px)]"
+        initial={{ x: 2 }}
+        animate={{
+          x: 0,
+          opacity: 1,
+          rotate: inView ? 360 : 0, // Add rotation for spinning effect when in view
+        }}
+        transition={{ duration: 2 }}
+        className="w-[clamp(110px,20vw,320px)]"
         src={imgRight}
         alt=""
       />
