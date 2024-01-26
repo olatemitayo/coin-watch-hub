@@ -15,12 +15,14 @@ interface CoinContextProps {
   page: number;
   setPage: any
   totalPages: number
+  setPerPage: any;
+  perPage: number
 }
 
 
 // Create your context
 export const CoinContext = createContext<CoinContextProps>({
-  cryptoData: undefined,
+  cryptoData: '--',
   isLoading: false,
   searchData: undefined,
   getSearchResult: () => {},
@@ -29,7 +31,9 @@ export const CoinContext = createContext<CoinContextProps>({
   coinSearch: undefined,
   page: 1,
   setPage : () => {},
-  totalPages: 250
+  totalPages: 250,
+  setPerPage: () => {},
+  perPage: 10,
 });
 
 // Create your context provider component
@@ -40,6 +44,7 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
   const [coinSearch, setCoinSearch] = useState("")
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(250)
+  const [perPage, setPerPage] = useState(10)
 
   
 
@@ -58,7 +63,7 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
     try {
       setIsLoading(true);
       const data = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinSearch}&order=market_cap_desc&per_page=25&page=${page}&sparkline=false&locale=en`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinSearch}&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=false&locale=en`
       ).then((res) => res.json());
       setCryptoData(data);
       console.log({data})
@@ -85,10 +90,10 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     getCryptoData();
-  }, [coinSearch, page]);
+  }, [coinSearch, page, perPage]);
 
   return (
-    <CoinContext.Provider value={{ cryptoData, isLoading, searchData, getSearchResult, setCoinSearch, setSearchData, coinSearch, page, setPage, totalPages }}>
+    <CoinContext.Provider value={{ cryptoData, isLoading, searchData, getSearchResult, setCoinSearch, setSearchData, coinSearch, page, setPage, totalPages, setPerPage, perPage }}>
       {children}
     </CoinContext.Provider>
   );

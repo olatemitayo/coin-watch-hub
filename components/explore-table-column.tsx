@@ -6,6 +6,7 @@ import Link from "next/link";
 
 
 export const ExploreTableColumns: ColumnDef<ExplorePokedex>[] = [
+ 
   {
     accessorKey: "name",
     header: "Name",
@@ -35,11 +36,25 @@ export const ExploreTableColumns: ColumnDef<ExplorePokedex>[] = [
     enableSorting: false,
   },
   {
+    accessorKey: "market_cap_rank",
+    header: "Rank",
+    cell: ({ row }) => (
+      <Text className="text-[#0A0B0D] text-[14px] font-poppins">
+      {row.original?.market_cap_rank !== undefined
+    ? `${row.original?.market_cap_rank}`
+    : '--'}
+      </Text>
+    ),
+    enableSorting: false,
+  },
+  {
     accessorKey: "price_change_24h",
     header: "Price",
     cell: ({ row }) => (
       <Text className="text-[#0A0B0D] text-[14px] font-poppins">
-        {`$${row.original?.current_price?.toLocaleString()}`}
+      {row.original?.current_price !== undefined
+    ? `$${row.original?.current_price?.toLocaleString()}`
+    : '--'}
       </Text>
     ),
     enableSorting: false,
@@ -49,7 +64,10 @@ export const ExploreTableColumns: ColumnDef<ExplorePokedex>[] = [
     header: "Market Cap",
     cell: ({ row }) => (
       <Text className="text-[#0A0B0D] text-[14px] font-poppins">
-        {`$${row.original?.market_cap?.toLocaleString()}`}
+        {/* {`$${row.original?.market_cap?.toLocaleString()}`} */}
+        {row.original?.market_cap !== undefined
+    ? `$${row.original?.market_cap?.toLocaleString()}`
+    : '--'}
       </Text>
     ),
     enableSorting: false,

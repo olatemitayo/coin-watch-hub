@@ -70,23 +70,10 @@ export default function Home() {
         <div className="hidden clg:block">
           <MobileTable />
         </div>
-          {isLoading ? null : 
-        <Flex w="100%" justify="space-between" align='center' py={20}>
-            <span>
-            Powered by{" "}
-            <a
-              href="http://www.coingecko.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-300 hover:text-red-400 hover:font-extrabold"
-            >
-              {" "}
-              Coingecko
-            </a>
-          </span>
-          <Pagination />
-        </Flex>
-          }
+        {coinSearch !=  "" ? null : <>  {isLoading ? null : 
+      <Pagination />
+          }</>}
+        
        
         <Flex w="100%" align="center" justify="center">
           {isLoading ? null : (
