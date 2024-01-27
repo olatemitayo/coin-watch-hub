@@ -8,9 +8,9 @@ import { SearchInput } from ".";
 export function Searchcoin() {
   const { getSearchResult } = useContext(CoinContext);
 
-  const debounceFunc = debounce((val: any) => {
+  const debounceFunc = debounce((val: string) => {
     getSearchResult(val);
-  }, 2000);
+  }, 3000);
 
   return (
     <>

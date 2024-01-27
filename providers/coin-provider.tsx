@@ -1,6 +1,8 @@
 import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
 import { createContext } from "react";
 import {  SearchCoin, SearchData, SearchPokedex } from "@/utils";
+import { useQuery } from "@tanstack/react-query";
+import { builder } from "@/api/builder";
 
 
 
@@ -17,6 +19,8 @@ interface CoinContextProps {
   totalPages: number
   setPerPage: any;
   perPage: number
+  trendLoading: boolean
+  trendingData: any
 }
 
 
@@ -34,6 +38,8 @@ export const CoinContext = createContext<CoinContextProps>({
   totalPages: 250,
   setPerPage: () => {},
   perPage: 10,
+  trendLoading: false,
+  trendingData: undefined
 });
 
 // Create your context provider component
@@ -92,8 +98,18 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
     getCryptoData();
   }, [coinSearch, page, perPage]);
 
+  const {
+    data: trendingData,
+    isLoading:trendLoading,
+    isError,
+  } = useQuery({
+    queryFn: () => builder.use().asset.trending(),
+    queryKey: builder.asset.trending.get(),
+    select: ({ data }) => data?.coins?.map((item) => item?.item),
+  });
+
   return (
-    <CoinContext.Provider value={{ cryptoData, isLoading, searchData, getSearchResult, setCoinSearch, setSearchData, coinSearch, page, setPage, totalPages, setPerPage, perPage }}>
+    <CoinContext.Provider value={{ cryptoData, isLoading, searchData, getSearchResult, setCoinSearch, setSearchData, coinSearch, page, setPage, totalPages, setPerPage, perPage, trendLoading, trendingData }}>
       {children}
     </CoinContext.Provider>
   );

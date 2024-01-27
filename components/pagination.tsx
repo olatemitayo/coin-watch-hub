@@ -1,10 +1,10 @@
 import { CoinContext } from "@/providers";
-import { Button, Divider, Flex, NumberInput, Text, TextInput } from "@mantine/core";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { Button, Divider, Flex, Text, TextInput } from "@mantine/core";
+import React, { useContext, useEffect, useState } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 const PerPage = () => {
-  const { perPage, setPerPage, totalPages } = useContext(CoinContext);
+  const { perPage, setPerPage } = useContext(CoinContext);
   const [inputValue, setInputValue] = useState(String(perPage));
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -95,7 +95,7 @@ export function Pagination() {
     setPage(1);
   };
   return (
-    <Flex w="100%" justify="space-between" align="center" py={20}>
+    <Flex w="100%" justify="space-between" align="center" py={20} className="max-w-[1440px] m-auto clg:flex-col-reverse clg:gap-6"    px="clamp(12px,4vw,48px)">
       <Flex gap={10} direction='column' >
       <PerPage />
       
@@ -103,7 +103,7 @@ export function Pagination() {
       </Flex>
 
       <Flex align="center">
-        <ul className="flex gap-6 items-center justify-center text-[#202326]">
+        <ul className="flex gap-6  gsm:gap-2 items-center justify-center text-[#202326]">
           {page === 1 ? null : (
             <div className="group cursor-pointer">
               <BsArrowLeftCircle

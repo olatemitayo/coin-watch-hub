@@ -27,7 +27,7 @@ export const ExploreTableColumns: ColumnDef<ExplorePokedex>[] = [
             {" "}
             {row.original?.name}
           </Text>
-          <Text className="text-[#5B616E] text-[14px]  bg-red-300 rounded px-[4px] w-max font-poppins">
+          <Text className="text-[#5B616E] text-[14px]  bg-red-100 rounded px-[4px] w-max font-poppins">
             {row.original?.symbol?.toLocaleUpperCase()}
           </Text>
         </Flex>
@@ -118,7 +118,7 @@ export const ExploreTableColumns: ColumnDef<ExplorePokedex>[] = [
       <Link href={`/${row.original?.id}`} className="cursor-pointer">
         <Button
           id={row.original?.total_supply as unknown as string}
-          className="text-[#fff] bg-red-300 hover:bg-red-400  font-poppins"
+          className="text-[#444b5b] bg-red-200 hover:text-white hover:bg-red-300  font-poppins"
         >
           Details
         </Button>

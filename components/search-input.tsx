@@ -10,8 +10,8 @@ export function SearchInput({ handleSearch }: { handleSearch: any }){
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();
       const query = e.target.value;
-      setSearchText(query);
       handleSearch({ query });
+      setSearchText(query);
     };
   
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -37,7 +37,7 @@ export function SearchInput({ handleSearch }: { handleSearch: any }){
           placeholder="search an asset"
           rightSection={<BiSearch type="submit" size={24} />}
         />
-        {searchText.length > 0 ? (
+        {searchText.length > 0  ? (
           <ul className="z-10 p-6 clg:p-2 h-[500px] overflow-auto rounded-md text-white font-medium flex flex-col gap-2 clg:gap-1 text-start absolute mt-[clamp(8px,1.5vw,24px)] bg-[#212326] w-full  bg-opacity-60 backdrop-blur-md">
             <Box></Box>
             {searchData ? (

@@ -2,16 +2,18 @@ import { builder } from "@/api/builder";
 import { useCustomTable } from "@/hooks/custom-data";
 import { Stack } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataTable } from "./custom-table";
 import { TrendingTableColumns } from "./trending-table-column";
 import { ClgTrendingTableColumns, ProductLoading } from ".";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { CoinContext } from "@/providers";
 
 export function Trending() {
   const controls = useAnimation();
   const [ref, inView] = useInView();
+  const {trendingData, trendLoading} = useContext(CoinContext)
 
   // Set up the animation logic
   useEffect(() => {
@@ -29,17 +31,7 @@ export function Trending() {
     }
   }, [controls, inView]);
   
-  // get trending list
-  const {
-    data: trendingData,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryFn: () => builder.use().asset.trending(),
-    queryKey: builder.asset.trending.get(),
-    select: ({ data }) => data?.coins?.map((item) => item?.item),
-  });
-  // console.log({ trendingData });
+
   const { table } = useCustomTable({
     tableData: trendingData,
     columns: TrendingTableColumns,
@@ -53,10 +45,10 @@ export function Trending() {
     initial={{ x: 0, opacity: 0 }}
     animate={controls} className="px-[clamp(8px,4vw,48px)]" >
       <div className="clg:hidden"> 
-        {isLoading ? <ProductLoading /> : <DataTable table={table} />}
+        {trendLoading ? <ProductLoading /> : <DataTable table={table} />}
       </div>
       <div className="hidden clg:block">
-        {isLoading ? <ProductLoading /> : <DataTable table={clgtable} />}
+        {trendLoading ? <ProductLoading /> : <DataTable table={clgtable} />}
       </div>
     </motion.div>
   );

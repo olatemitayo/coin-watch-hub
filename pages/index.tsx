@@ -7,6 +7,7 @@ import { ExploreTableColumns } from "@/components/explore-table-column";
 import {
   DataTable,
   HeroLayout,
+  MarketCap,
   MobileTable,
   Navbar,
   Pagination,
@@ -14,6 +15,7 @@ import {
   Searchcoin,
 } from "@/components";
 import { CoinContext } from "@/providers";
+
 
 export default function Home() {
   const controls = useAnimation();
@@ -45,6 +47,7 @@ export default function Home() {
   return (
     <Stack className=" gap-[clamp(20px,5vw,60px)] pb-5">
       {/* Navbar  */}
+      <MarketCap />
       <Navbar />
 
       <HeroLayout
@@ -64,17 +67,14 @@ export default function Home() {
         animate={controls}
         className="px-[clamp(8px,4vw,48px)]"
       >
-        <div className="clg:hidden">
+        <div className="clg:hidden max-w-[1440px] m-auto  px-[clamp(12px,4vw,48px)]">
           {isLoading ? <ProductLoading /> : <DataTable table={table} />}
         </div>
         <div className="hidden clg:block">
           <MobileTable />
         </div>
-        {coinSearch !=  "" ? null : <>  {isLoading ? null : 
-      <Pagination />
-          }</>}
-        
-       
+        {coinSearch != "" ? null : <> {isLoading ? null : <Pagination />}</>}
+
         <Flex w="100%" align="center" justify="center">
           {isLoading ? null : (
             <>
