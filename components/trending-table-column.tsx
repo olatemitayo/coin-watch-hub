@@ -52,7 +52,7 @@ export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
     accessorKey: "market_cap",
     header: "Market Cap",
     cell: ({ row }) => (
-      <Text className="text-[#0A0B0D] text-[14px] font-poppins">{row.original.data.market_cap}</Text>
+      <Text className="text-[#0A0B0D] text-[14px] font-poppins">{row.original?.data?.market_cap}</Text>
     ),
     enableSorting: false,
   },
@@ -62,7 +62,7 @@ export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
     header: "Total Volume",
     cell: ({ row }) => (
       <Text className="text-[#0A0B0D] text-[14px] font-poppins">
-        {row.original.data.total_volume as string}
+        {row.original?.data?.total_volume as string}
       </Text>
     ),
     enableSorting: false,
@@ -71,8 +71,8 @@ export const TrendingTableColumns: ColumnDef<TrendingItem>[] = [
     accessorKey: "actions",
     header: "Details",
     cell: ({ row }) => (
-      <Link href={`/${row.original.coin_id}`}>
-      <Button id={row.original.coin_id as unknown as string} className="text-[#0A0B0D] bg-red-300 hover:bg-red-400 text-[14px] font-poppins">
+      <Link href={`/${row.original.id}`}>
+      <Button id={row.original?.id as unknown as string} className="text-[#0A0B0D] bg-red-300 hover:bg-red-400 text-[14px] font-poppins">
        Details
       </Button>
       </Link>

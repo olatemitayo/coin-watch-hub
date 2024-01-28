@@ -21,6 +21,7 @@ export default function TrendingPage() {
       {/* Navbar  */}
       <Navbar />
       <HeroLayout
+      className='!mt-[clamp(100px,9vw,130px)]'
         imgLeft="/charthero.svg"
         imgRight="/coinbag.svg"
         title=" Trending Tokens"

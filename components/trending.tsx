@@ -17,7 +17,7 @@ export function Trending() {
 
   // Set up the animation logic
   useEffect(() => {
-    if (inView) {
+    if (inView) {   
       controls.start({
         x: 0,
         opacity: 1,
@@ -39,7 +39,7 @@ export function Trending() {
   const { table:clgtable } = useCustomTable({
     tableData: trendingData,
     columns: ClgTrendingTableColumns,
-  });
+  }); 
   return (
     <motion.div  ref={ref}
     initial={{ x: 0, opacity: 0 }}

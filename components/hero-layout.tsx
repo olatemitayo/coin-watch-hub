@@ -1,4 +1,4 @@
-import { Flex, Stack, Text, Title } from "@mantine/core";
+import { Flex, Stack, Text, Title, clsx } from "@mantine/core";
 import { motion, useAnimation } from "framer-motion";
 
 import { useInView } from "react-intersection-observer";
@@ -6,11 +6,12 @@ import React, { useEffect } from "react";
 interface IHeroLayout {
     imgLeft: string,
     imgRight: string,
+    className?: string,
     title: string,
     text: string,
     children?: React.ReactNode
 }
-export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLayout) {
+export  function HeroLayout({imgLeft, className, title, text, children}: IHeroLayout) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
@@ -36,7 +37,8 @@ export  function HeroLayout({imgLeft, imgRight, title, text, children}: IHeroLay
       w="100%"
       justify="center"
       align="center"
-      className="max-w-[1440px] m-auto lg:flex-col-reverse "
+      className={clsx(`max-w-[1440px] m-auto lg:flex-col-reverse `, className)}
+      // className="max-w-[1440px] m-auto lg:flex-col-reverse "
       px="clamp(12px,4vw,48px)"
       gap={16}
     >

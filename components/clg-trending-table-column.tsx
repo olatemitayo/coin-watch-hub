@@ -19,7 +19,7 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
             {row.original?.name}
           </Text>
           <Text className="text-[#5B616E] text-[14px] font-poppins" size={14}>
-            {row.original.symbol}
+            {row.original?.symbol}
           </Text>
         </Flex>
       </Flex>
@@ -27,11 +27,19 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
     enableSorting: false,
   },
   {
-    accessorKey: "current_price",
+    accessorKey: "market_cap_rank",
+    header: "Rank",
+    cell: ({ row }) => (
+      <Text className="text-[#0A0B0D] text-[14px] font-poppins">{row.original.market_cap_rank}</Text>
+    ),
+    enableSorting: true,
+  },
+  {
+    accessorKey: "data",
     header: "Price",
-    cell: (info) => (
-      <Text className=" text-[14px] font-poppins">
-        {info ? <> {`$${info.getValue() as string} `} </> : <> -- </>}
+    cell: ({ row }) => (
+      <Text className="text-[#0A0B0D] text-[14px] font-poppins">
+        {row.original?.data?.price as string}
       </Text>
     ),
     enableSorting: false,
@@ -44,7 +52,7 @@ export const ClgTrendingTableColumns: ColumnDef<TrendingItem>[] = [
       <Link
         id={info.getValue() as unknown as string}
         href={`/${info.getValue()}`}
-        className="text-red-300 p-2  hover:text-red-400 text-[12px] font-poppins font-semibold"
+        className="text-red-300 p-2 text-[14px]   hover:text-red-400  font-poppins font-semibold"
       >
         View
       </Link>
