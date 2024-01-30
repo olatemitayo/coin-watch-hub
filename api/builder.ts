@@ -1,12 +1,11 @@
 import { createBuilder } from "@ibnlanre/portal";
 import { API } from "./axios-config";
-import { TrendingPokedex, TrendingPokedexData, individualCoinList } from "@/utils/types";
+import { ChartDetails, TrendingPokedex, TrendingPokedexData, individualCoinList } from "@/utils/types";
 
 export const builder = createBuilder({
     asset: {
         trending: () => API.get<TrendingPokedexData>('/search/trending'),
-        coin_list: () => API.get(`/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&locale=en`),
          details: (id: string) => API.get<individualCoinList>(`/coins/${id}`),
-         search: (query: string ) => API.get(`/search?query=${query}`)
+         chart: (id: string) => API.get<ChartDetails>(`/coins/${id}/market_chart?vs_currency=usd&days=7&interval=daily`)
     }
 })

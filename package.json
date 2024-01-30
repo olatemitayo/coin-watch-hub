@@ -27,7 +27,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "react-intersection-observer": "^9.5.3"
+    "react-intersection-observer": "^9.5.3",
+    "recharts": "^2.11.0"
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.9",

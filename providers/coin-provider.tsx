@@ -1,8 +1,9 @@
 import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
 import { createContext } from "react";
-import {  SearchCoin, SearchData, SearchPokedex } from "@/utils";
+import {  SearchCoin, SearchData, SearchPokedex, individualCoinList } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { builder } from "@/api/builder";
+import { useRouter } from "next/router";
 
 
 
@@ -21,6 +22,8 @@ interface CoinContextProps {
   perPage: number
   trendLoading: boolean
   trendingData: any
+  back:  any
+  DetailsDetails: individualCoinList | undefined
 }
 
 
@@ -39,7 +42,9 @@ export const CoinContext = createContext<CoinContextProps>({
   setPerPage: () => {},
   perPage: 10,
   trendLoading: false,
-  trendingData: undefined
+  trendingData: undefined,
+  back: () => {},
+  DetailsDetails: undefined
 });
 
 // Create your context provider component
@@ -108,8 +113,18 @@ export const CryptoProvider = ({ children }: { children: ReactNode }) => {
     select: ({ data }) => data?.coins?.map((item) => item?.item),
   });
 
+  const { query, back } = useRouter();
+
+  //get individual designation details
+  const { data: DetailsDetails } = useQuery({
+    queryFn: () => builder.use().asset.details(query?.id as string),
+    queryKey: builder.asset.details.use(query?.id as string),
+    select: ({ data }) => data,
+    enabled: !!query?.id,
+  });
+
   return (
-    <CoinContext.Provider value={{ cryptoData, isLoading, searchData, getSearchResult, setCoinSearch, setSearchData, coinSearch, page, setPage, totalPages, setPerPage, perPage, trendLoading, trendingData }}>
+    <CoinContext.Provider value={{ cryptoData, isLoading, searchData, getSearchResult, setCoinSearch, setSearchData, coinSearch, page, setPage, totalPages, setPerPage, perPage, trendLoading, trendingData, back, DetailsDetails }}>
       {children}
     </CoinContext.Provider>
   );

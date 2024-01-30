@@ -445,3 +445,10 @@ export interface SearchNft {
     symbol: string;
     thumb:  string;
 }
+
+// chart types 
+export interface ChartDetails {
+    prices:        Array<number[]>;
+    market_caps:   Array<number[]>;
+    total_volumes: Array<number[]>;
+}

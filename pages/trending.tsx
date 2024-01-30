@@ -8,14 +8,7 @@ import { HeroLayout, Navbar } from "@/components";
 import { TrendingPokedexData } from "@/utils";
 
 export default function TrendingPage() {
-  // get trending list
-  const { data } = useQuery({
-    queryFn: () => builder.use().asset.trending(),
-    queryKey: builder.asset.trending.get(),
-    select: ({ data }:{data:TrendingPokedexData}) => data?.coins,
-  });
-
-  console.log({ data });
+ 
   return (
     <Stack>
       {/* Navbar  */}
