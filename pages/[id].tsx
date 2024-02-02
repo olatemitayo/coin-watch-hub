@@ -27,6 +27,7 @@ export default function CoinDetails() {
 
       return `${(value / 1e9).toFixed(1)}B`;
     };
+    console.log({DetailsDetails})
     return (
       <Stack className=" gap-[clamp(20px,5vw,60px)] pb-5">
         <Navbar />
