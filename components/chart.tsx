@@ -3,6 +3,25 @@ import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 
+function CustomTooltip({ payload, label, active, currency = "usd" }: any) {
+  if (active) {
+    return (
+      <div className="custom-tooltip bg-white p-2 chartShadows">
+     
+        <p className="desc text-[#9EA6FF] font-semibold">{label} </p>
+        <p className="label text-sm text-black font-semibold">{` ${
+          new Intl.NumberFormat("en-IN", {
+            style: "currency",
+            currency: currency,
+            minimumFractionDigits: 5,
+          }).format(payload[0]?.value)
+          }`}</p>
+      </div>
+    );
+  }
+  return null;
+}
+
 const ChartComponent = ({ data }: { data: string | number[] }) => {
   return (
     <ResponsiveContainer width={'70%'} className='lg:!w-full' height={400}>
@@ -13,10 +32,10 @@ const ChartComponent = ({ data }: { data: string | number[] }) => {
         stroke="#8884d8"
         strokeWidth="2px"
       />
-       <CartesianGrid stroke="#eee" strokeDasharray="5 5" strokeWidth='2px'/>
-      <XAxis dataKey="date" />
-      <YAxis />
-      <Tooltip />
+       <CartesianGrid stroke="#9EA6FF" strokeDasharray="5 5" strokeWidth='2px'/>
+      <XAxis dataKey="date"  hide/>
+      <YAxis dataKey='prices' hide domain={["auto", "auto"]}/>
+      <Tooltip content={<CustomTooltip payload={undefined} label={undefined} active={undefined} cursor={false} />}/>
       <Legend />
     </LineChart>
 
@@ -44,7 +63,6 @@ export function Chart({ id }: { id: string }) {
   console.log({ convertedData });
   return (
     <Flex
-    //   className="w-full clg:w-[680px] cmd:w-[511px] cgsm:w-[420px] cgsm:h-[300px] gsm:w-[380px]"
     className="w-full h-[60%]"
       align="center"
       justify="center"

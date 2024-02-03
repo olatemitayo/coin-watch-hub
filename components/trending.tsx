@@ -1,7 +1,4 @@
-import { builder } from "@/api/builder";
 import { useCustomTable } from "@/hooks/custom-data";
-import { Stack } from "@mantine/core";
-import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect } from "react";
 import { DataTable } from "./custom-table";
 import { TrendingTableColumns } from "./trending-table-column";

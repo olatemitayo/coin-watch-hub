@@ -7,7 +7,11 @@
     -moz-box-shadow: 1px 2px 2px 2px rgba(254, 202, 202, 0.1);
     box-shadow: 1px 2px 2px 2px rgba(254, 202, 202, 0.1);
 }
-
+.chartShadows{
+    box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.75);
+}
 .no-scrollbar::-webkit-scrollbar {
     display: none !important;
 }
