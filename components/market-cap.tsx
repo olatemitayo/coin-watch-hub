@@ -70,9 +70,11 @@ export function MarketCap() {
                   </Title>
                 </Flex>
                 <Flex gap={12} align="center">
-                  <Text className="text-[clamp(14px,1.2vw,20px)] clg:!gap-8">
-                    {item?.data?.price?.slice(0,6)}
-                  </Text>
+                <Text className="text-[clamp(14px,1.2vw,20px)] clg:!gap-8">
+  {typeof item?.data?.price === 'string'
+   ? item?.data?.price.slice(0, 6)
+    : String(item?.data?.price).slice(0, 6)}
+</Text>
                   <Text style={{
           color:
             item?.data?.price_change_percentage_24h["usd"] &&

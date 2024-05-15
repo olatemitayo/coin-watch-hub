@@ -1,6 +1,6 @@
-import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { createContext } from "react";
-import {  SearchCoin, SearchData, SearchPokedex, individualCoinList } from "@/utils";
+import {  individualCoinList } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { builder } from "@/api/builder";
 import { useRouter } from "next/router";
