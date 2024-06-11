@@ -27,12 +27,15 @@ export function Navbar() {
         w="100%"
         px="clamp(12px,4vw,48px)"
       >
+        <Link href={"/"}>
         <Flex align="center">
           <Title className="text-[clamp(20px,2vw,34px)]" c="#263238">
             Coin
           </Title>
           <BsEye size="clamp(24px,4vw,48px)" color="#263238" />
         </Flex>
+        
+        </Link>
         <Flex gap={20}>
           {NavItems?.map((item) => (
             <Link
